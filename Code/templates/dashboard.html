@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Analysis of Accidents in United States</title>
+    <link rel="icon" href="data:;base64,=">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for ('static', filename='lib/css/bootstrap.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for ('static', filename='lib/css/dc.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for ('static', filename='lib/css/keen-dashboards.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for ('static', filename='lib/css/d3.slider.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for ('static', filename='css/style.css') }}"
+    />
+
+    <title>CSE 564 Final Project</title>
+    </head>
+    <body>
+    <div class="tab">
+      <button
+        class="tablinks"
+        onclick="openTabClick(event, 'dashboard_container', 1)"
+        id="dashboard_button"
+      >
+        Dashboard
+      </button>
+      <button
+        class="tablinks"
+        onclick="openTabClick(event, 'dimension_container', 2)"
+        id="btn_dimensions"
+      >
+        Dimensionality
+      </button>
+      <button
+        class="tablinks"
+        onclick="openTabClick(event, 'pcamds_container', 3)"
+        id="btn_pcamds"
+      >
+        PCA/MDS
+      </button>
+    </div>
+
+    <div class="tabcontent" id="dashboard_container">
+      <div class="row">
+
+        <div class="col-sm-6">
+          <div class="chart-wrapper">
+            <div class="chart-title">
+              Distribution of Accident across United States
+            </div>
+
+            <div class="chart-stage">
+              <div id="us-chart"></div>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div class="chart-wrapper">
+              <div class="chart-title">
+                Total Accidents
+              </div>
+
+              <div class="chart-stage">
+                <div id="accident-count"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div class="chart-wrapper">
+              <div class="chart-title">
+                Total Population
+              </div>
+
+              <div class="chart-stage">
+                <div id="population-count"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="col-sm-6">
+          <div class="row">
+
+            <div class="col-sm-12">
+              <div class="chart-wrapper">
+                <div class="chart-title">
+                  Accident Count Yearly
+                </div>
+
+                <div class="chart-stage">
+                  <div id="time-chart"></div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="col-sm-6">
+              <div class="chart-wrapper">
+                <div class="chart-title">
+                  Severity of Accident
+                </div>
+
+                <div class="chart-stage">
+                  <div
+                    id="severity-piechart"
+                    style="transform: translate(15px, 0px);"
+                  ></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="chart-wrapper">
+                <div class="chart-title">
+                  Weather Condition
+                </div>
+
+                <div class="chart-stage">
+                  <div id="weather-barchart"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tabcontent" id="dimension_container">
+      <svg class="scree_svg" id="scree" width="650" height="550" style="transform: translate(15px, 100px);"></svg>
+      <svg class="bar_svg" id="dim_bar" width="650" height="550" style="transform: translate(15px, 100px);"></svg>
+    </div>
+
+    <div class="tabcontent" id="pcamds_container">
+      <svg class="pca_svg" id="pca_plot" width="650" height="550" style="transform: translate(15px, 100px);"></svg>
+      <svg class="mds_svg" id="mds_plot" width="650" height="550" style="transform: translate(15px, 100px);"></svg>
+    </div>
+
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="{{ url_for('static', filename='lib/js/d3.slider.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/js/crossfilter.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/js/dc.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/js/queue.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/js/keen.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/js/legend.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+  </body>
+</html>
